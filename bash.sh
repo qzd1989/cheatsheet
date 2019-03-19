@@ -29,13 +29,12 @@ echo ${varname:+word}               # 如果变量不为空则返回word,否则�
 echo ${varname:?message}            # 如果变量不为空则返回变量,否则打印错误信息并退出
 echo ${varname:offset:len}          # 取得字符串的子字符串,len支持-1倒序
 
-echo ${variable#pattern}            # 如果变量头部匹配 pattern，则删除最小匹配部分返回剩下的
-echo ${variable##pattern}           # 如果变量头部匹配 pattern，则删除最大匹配部分返回剩下的
-echo ${variable%pattern}            # 如果变量尾部匹配 pattern，则删除最小匹配部分返回剩下的
-echo ${variable%%pattern}           # 如果变量尾部匹配 pattern，则删除最大匹配部分返回剩下的
-echo ${variable/pattern/str}        # 将变量中第一个匹配 pattern 的替换成 str，并返回
+echo ${variable#pattern}            # 如果变量头部匹配 pattern,则删除最小匹配部分返回剩下的
+echo ${variable##pattern}           # 如果变量头部匹配 pattern,则删除最大匹配部分返回剩下的
+echo ${variable%pattern}            # 如果变量尾部匹配 pattern,则删除最小匹配部分返回剩下的
+echo ${variable%%pattern}           # 如果变量尾部匹配 pattern,则删除最大匹配部分返回剩下的
+echo ${variable/pattern/str}        # 将变量中第一个匹配 pattern 的替换成 str,并返回
 echo ${variable//pattern/str}       # 将变量中所有匹配 pattern 的地方替换成 str 并返回
-
 
 arr=(valA valB valC)                # 创建数组
 arr=(valA valB [5]=valC)            # 创建数组并自定义索引
@@ -51,8 +50,8 @@ echo ${arr[@]:2}                    # 查看索引2起的后全部元素(包含2
 echo ${arr[@]:2:2}                  # 查看索引2起的2个元素(包含2)
 echo ${arr[@]:(-3):2}               # 查看倒数第3个元素起的2个元素(包含倒数第3个元素)
 
-arr=($text)                         # 按空格分隔 text 成数组，并赋值给变量
-IFS=":"; arr=($text)                # 按:分隔字符串 text 成数组，并赋值给变量
+arr=($text)                         # 按空格分隔 text 成数组,并赋值给变量
+IFS=":"; arr=($text)                # 按:分隔字符串 text 成数组,并赋值给变量
 text="${array[*]}"                  # 用空格链接数组并赋值给变量
 text=$(IFS=/; echo "${array[*]}")   # 用斜杠链接数组并赋值给变量
 
@@ -77,11 +76,11 @@ echo $(( 1+1 ))                     # 算术运算
 #####################################################################
 # 定义一个新函数
 function myfunc() {
-    # $1 代表第一个参数，$N 代表第 N 个参数
+    # $1 代表第一个参数,$N 代表第 N 个参数
     # $# 代表参数个数
     # $0 代表被调用者自身的名字
-    # $@ 代表所有参数，类型是个数组，想传递所有参数给其他命令用 cmd "$@" 
-    # $* 空格链接起来的所有参数，类型是字符串
+    # $@ 代表所有参数,类型是个数组,想传递所有参数给其他命令用 cmd "$@" 
+    # $* 空格链接起来的所有参数,类型是字符串
     {shell commands ...}
 }
 
@@ -105,14 +104,14 @@ statement1 || statement2            # or 操作符
 -n str1                             # 判断字符串不为空（长度大于零）
 -z str1                             # 判断字符串为空（长度等于零）
 
--a file                             # 判断文件存在，如 [ -a /tmp/abc ] && echo "exists"
--d file                             # 判断文件存在，且该文件是一个目录
--e file                             # 判断文件存在，和 -a 等价
--f file                             # 判断文件存在，且该文件是一个普通文件（非目录等）
--r file                             # 判断文件存在，且可读
--s file                             # 判断文件存在，且尺寸大于0
--w file                             # 判断文件存在，且可写
--x file                             # 判断文件存在，且执行
+-a file                             # 判断文件存在,如 [ -a /tmp/abc ] && echo "exists"
+-d file                             # 判断文件存在,且该文件是一个目录
+-e file                             # 判断文件存在,和 -a 等价
+-f file                             # 判断文件存在,且该文件是一个普通文件（非目录等）
+-r file                             # 判断文件存在,且可读
+-s file                             # 判断文件存在,且尺寸大于0
+-w file                             # 判断文件存在,且可写
+-x file                             # 判断文件存在,且执行
 -N file                             # 文件上次修改过后还没有读取过
 -O file                             # 文件存在且属于当前用户
 -G file                             # 文件存在且匹配你的用户组
@@ -130,7 +129,7 @@ num1 -ge num2                       # 数字判断：num1 >= num2
 # 分支控制 if else elif fi
 #####################################################################
 [[ -a /tmp ]]; echo $?              # 判断/tmp文件夹是否存在,输出是 0
-[ -a /tmp ]; echo $?                # 和上面完全等价，/tmp 肯定是存在的，所以输出是 0
+[ -a /tmp ]; echo $?                # 同上等价
 
 # 判断/etc/passwd是否存在
 if [[ -e /etc/passwd ]]; then   
