@@ -1,4 +1,4 @@
-# cheatsheet
-速查表
+# 速查表
 
-    * [bash速查表](bash.sh)
+## 目录
+    - [bash速查表](bash.sh)
