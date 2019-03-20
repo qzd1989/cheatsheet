@@ -1,6 +1,6 @@
 #####################################################################
 # BASH CHEATSHEET (中文速查表)  -  by zev (created on 2019/03/19)
-# Version: 1, Last Modified: 2019/03/19 17:34
+# Version: 1, Last Modified: 2019/03/20 20:19
 #####################################################################
 
 #####################################################################
@@ -9,7 +9,7 @@
 declare -a                          # 查看所有数组
 declare -f                          # 查看所有函数
 declare -F                          # 查看所有函数,仅显示函数名
-declare -i                          # 查看所有整数
+declare -i                          # 查看所有定义过的整数,包含随机数$RANDOM
 declare -r                          # 查看所有只读变量
 declare -x                          # 查看所有被导出成环境变量的东西
 declare -p varname                  # 输出变量是怎么定义的（类型+值）
@@ -162,6 +162,17 @@ done
 while read row; do
     echo $row
 done < /etc/passwd
+
+# 多进程并发执行示例,将不会按1到10顺序输出
+# 并发执行不能保证一定成功,事实上并发越高越容易出现失败的情况,可通过linux的named pipe+shell的read实现并发消费个数控制
+for i in `seq 1 10`; do
+{
+    `sleep $(( $RANDOM%2 ))s`
+    echo $i
+}&
+done
+wait
+echo "all progresses are finished"
 
 # for 列举某目录下面的所有文件
 for f in /home/*; do
